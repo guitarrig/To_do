@@ -8,9 +8,9 @@
                 <div class="card-header">New wish!</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('create') }}">
+                    <form method="POST" action="{{ route('todos.store') }}">
                         @csrf
-
+                        @method('POST')
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">Name</label>
 
@@ -31,7 +31,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
-                              
+
                             </div>
                         </div>
 

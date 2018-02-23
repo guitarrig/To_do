@@ -15,8 +15,9 @@
                     @endif
 
                     Hellow, {{ Auth::user()->name }}
-                    <form method="post" action="{{route('new')}}">
+                    <form action="{{route('todos.create')}}">
                       {{csrf_field()}}
+                      @method('GET')
                       <input type="submit" value="Create!" class="btn btn-secondary">
                     </form>
                 </div>
@@ -47,16 +48,16 @@
                         </form>
                       </td>
                       <td>
-                        <form method="post" action="{{ route('edit')}}">
+                        <form method="post" action="{{ route('todos.show', $todo->id)}}">
                           {{ csrf_field() }}
-                          <input type="hidden" name="id" value="{{$todo->id}}">
+                          @method('GET')
                           <input type="submit" value="Edit" class="btn btn-success">
                         </form>
                       </td>
                       <td>
-                        <form method="post" action="{{ route('delete')}}">
+                        <form method="post" action="{{ route('todos.destroy', $todo->id)}}">
                           {{ csrf_field() }}
-                          <input type="hidden" name="id" value="{{$todo->id}}">
+                          @method('DELETE')
                           <input type="submit" class="btn btn-danger" value="Delete">
                         </form>
 

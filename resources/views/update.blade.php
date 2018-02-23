@@ -14,9 +14,9 @@
                         </div>
                     @endif
 
-                    <form method="post" action="{{route('update')}}">
+                    <form method="post" action="{{route('todos.update', $todo->id)}}">
                       {{csrf_field()}}
-                    <input type="hidden" name="id" value="{{$todo->id}}">
+                      @method('PUT')
                     <input type="text" name="name" value="{{$todo->name}}">
                     <input type="text" name="description" value="{{$todo->description}}">
                     <input type="submit" value="Update" class="btn btn-success">

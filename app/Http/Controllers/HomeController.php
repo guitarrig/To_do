@@ -16,17 +16,22 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function index()
     {
         $todos = Todo::all();
         return view('home', ['todos' => $todos]);
     }
+
+
+
 
     public function change(Request $request){
 
@@ -36,30 +41,44 @@ class HomeController extends Controller
       return redirect('/home');
     }
 
-    public function edit(Request $request){
-      $todo = Todo::find($request->id);
+
+
+
+    public function show($id){
+      $todo = Todo::find($id);
       return view('update', ['todo' => $todo]);
     }
 
-    public function update(Request $request){
-      Todo::where('id', $request->id)->update(['name' => $request->name, 'description' => $request->description]);
+
+
+
+    public function update($id, Request $request){
+      Todo::where('id', $id)->update(['name' => $request->name, 'description' => $request->description]);
       return redirect('/home');
     }
 
-    public function new(){
+
+
+
+    public function create(){
       return view('create');
     }
 
-    public function create(Request $request){
+
+
+
+    public function store(Request $request){
 
       Todo::insert(['name' => $request->name, 'description' => $request->description]);
 
       return redirect('/home');
-
     }
 
-    public function delete(Request $request){
-      Todo::where('id', $request->id)->delete();
+
+
+
+    public function destroy($id){
+      Todo::where('id', $id)->delete();
       return  redirect('/home');
 
     }

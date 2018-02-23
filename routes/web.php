@@ -18,11 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/create', 'HomeController@new')->name('new');
 
-Route::post('/new', 'HomeController@new')->name('new');
-Route::post('/create', 'HomeController@create')->name('create');
-Route::post('/edit', 'HomeController@edit')->name('edit');
 Route::post('/change', 'HomeController@change')->name('change_status');
-Route::post('/home', 'HomeController@update')->name('update');
-Route::post('/delete', 'HomeController@delete')->name('delete');
+
+Route::resource('todos', 'HomeController', ['except' =>['edit']]);
