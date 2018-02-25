@@ -33,10 +33,10 @@
                   </thead>
                   <tbody>
                     <?php $i = 0; ?>
-                    @foreach ($todos as $todo)
+                    @foreach ($user->todos as $todo)
                     <tr>
                       <td>{{++$i}}</td>
-                      <td><a href="{{route('show_user', $todo->user)}}">{{$todo->user->name}}</a></td>
+                      <td>{{$todo->user->name}}</td>
                       <td>{{$todo->name}}</td>
                       <td>{{$todo->description}}</td>
                       <td>{{$todo->status}}</td>
@@ -65,8 +65,8 @@
 
                     </tr>
                     @endforeach;
-                  <div class="pagination">  {{$todos->links()}}</div>
                   </tbody>
+
                 </table>
               </div>
             </div>

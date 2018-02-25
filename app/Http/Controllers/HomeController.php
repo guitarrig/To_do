@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Todo;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $todos = Todo::all();
+        $todos = Todo::with('user')->latest('id')->paginate(5);
         return view('home', ['todos' => $todos]);
     }
 
@@ -68,8 +69,8 @@ class HomeController extends Controller
 
 
     public function store(Request $request){
-
-      Todo::insert(['name' => $request->name, 'description' => $request->description]);
+      $user = Auth::id();
+      Todo::insert(['name' => $request->name, 'description' => $request->description, 'user_id' => $user]);
 
       return redirect('/home');
     }
