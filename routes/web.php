@@ -23,3 +23,4 @@ Route::get('/user/{id}', 'UserController@show')->name('show_user');
 Route::post('/change', 'HomeController@change')->name('change_status');
 
 Route::resource('todos', 'HomeController', ['except' =>['edit']]);
+Route::resource('lists', 'ListController', ['only' => ['edit', 'update', 'show', 'index', 'destroy', 'create', 'store']]);
