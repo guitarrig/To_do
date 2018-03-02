@@ -22,8 +22,8 @@ class ListController extends Controller
 
     public function index()
     {
-         $lists = Lists::all();
-         return view('lists.index', ['lists' => $lists]);
+        $lists = Lists::all();
+        return view('lists.index', ['lists' => $lists]);
     }
 
     /**
@@ -86,7 +86,12 @@ class ListController extends Controller
      */
     public function update($id, Request $request)
     {
-      Lists::where('id', $id)->update(['name' => $request->name, 'private' => $request->private]);
+      if ($request->private) {
+        Lists::where('id', $id)->update(['name' => $request->name, 'private' => $request->private]);
+      }else {
+        Lists::where('id', $id)->update(['name' => $request->name, 'private' => 0]);
+
+      }
       return redirect('/lists');
     }
 

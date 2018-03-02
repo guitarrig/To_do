@@ -25,6 +25,7 @@
                       <th>#</th>
                       <th>User</th>
                       <th>Name</th>
+                      <th>Private</th>
                       <th>№ todos</th>
                       <th>Change Status</th>
                     </tr>
@@ -36,7 +37,11 @@
                       <td>{{++$i}}</td>
                       <td>{{$list->user->name }}</td>
                       <td><a href="{{ route('lists.show', $list->id)}}">{{$list->name}}</a></td>
-                      <td></td>
+                      @if ($list->private)
+                      <td>Private</td>
+                      @else
+                      <td>Public</td>
+                      @endif
                       <td>
                         <form method="post" action="{{ route('lists.destroy', $list->id)}}">
                           {{ csrf_field() }}
