@@ -14,10 +14,10 @@
                     @endif
 
                     Hellow, {{ Auth::user()->name }}
-                    <br><form action="{{route('todos.create')}}">
+                    <br><form method="post" action="{{route('list_create', $list_id)}}">
                       {{csrf_field()}}
                       @method('GET')
-                      <input type="submit" value="Create!" class="btn btn-secondary">
+                      <input type="submit" value="Create new todo!" class="btn btn-secondary">
                     </form>
                 </div>
                     <table class="table">
@@ -71,6 +71,27 @@
               </div>
             </div>
         </div>
+          <div id="disqus_thread"></div>
+            <script>
+
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+                    // var disqus_config = function () {
+                    // this.page.url = {{ Request::url()}};  // Replace PAGE_URL with your page's canonical URL variable
+                    // this.page.identifier = {{ $list_id}}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    // };
+
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://practice-13.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
     </div>
 </div>
 @endsection

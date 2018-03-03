@@ -17,12 +17,13 @@ class ListController extends Controller
      public function __construct(){
 
        $this->middleware('auth');
+       $this->middleware('user_list', ['only' => ['show']]);
      }
 
 
     public function index()
     {
-        $lists = Lists::all();
+        $lists = Lists::where('private', false)->orWhere('user_id', \Auth::id())->get();
         return view('lists.index', ['lists' => $lists]);
     }
 
@@ -62,7 +63,7 @@ class ListController extends Controller
     public function show($id)
     {
         $todos = Todo::where('list_id', $id)->get();
-        return  view('lists.todos', ['todos' => $todos]);
+        return  view('lists.todos', ['todos' => $todos, 'list_id' => $id]);
     }
 
     /**

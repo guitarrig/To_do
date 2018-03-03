@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-use App\Todolist;
+use App\Lists;
 
-class ProtectPrivateTodolist
+class UserProtect
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,10 @@ class ProtectPrivateTodolist
      */
     public function handle($request, Closure $next)
     {
-        $todolist = Todolist::findOrFail($request->route('todolist'));
-        if ($todolist->private && ($todolist->user->id != Auth::id())) {
-          abort(404);
+        $list = Lists::find($request->route('list'));
+        if ($list->private && ($list->user_id != Auth::id())) {
+          return redirect('/lists');
         }
-
-        return $next($request);
+         return $next($request);
     }
 }

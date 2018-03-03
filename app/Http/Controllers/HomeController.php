@@ -25,7 +25,6 @@ class HomeController extends Controller
      */
 
 
-
     public function index()
     {
         $todos = Todo::with('user')->latest('id')->paginate(5);
@@ -76,6 +75,18 @@ class HomeController extends Controller
       return redirect('/home');
     }
 
+    public function list_create($id){
+      return view('lists.addTodo', ['id' => $id]);
+    }
+
+    public function list_store( Request $request){
+      $user = Auth::id();
+      Todo::insert(['name' => $request->name,
+                    'description' => $request->description,
+                    'user_id' => $user,
+                    'list_id' => $request->id]);
+        return redirect('lists/'.$request->id);
+    }
 
 
 
