@@ -27,6 +27,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                      <li>
+                        {{$weather}} <img src="http://openweathermap.org/img/w/{{$icon}}.png" alt>
+                      </li>
+                      <li>
+                        <div id="openweathermap-widget-13"></div>
+<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+window.myWidgetParam.push({id: 13,cityid: '698740',appid: '03602e8ecaa99e778c6918b2e13f8a3b',
+units: 'metric',containerid: 'openweathermap-widget-13',  });  (function() {var script = document.createElement('script');
+script.async = true;script.charset = "utf-8";
+script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
+                      </li>
 
                     </ul>
 
@@ -34,6 +46,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+
                             <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                         @else

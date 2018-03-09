@@ -20,6 +20,7 @@
                       <input type="submit" value="Create new todo!" class="btn btn-secondary">
                     </form>
                 </div>
+                @if(!($todos->isEmpty()))
                     <table class="table">
                   <thead>
                     <tr>
@@ -64,7 +65,12 @@
                       </td>
 
                     </tr>
+
+
                     @endforeach;
+                    @else
+                    <div class="card-header"> Sorry, the list is empty </div>
+                    @endif
                   <div class="pagination"> </div>
                   </tbody>
                 </table>
