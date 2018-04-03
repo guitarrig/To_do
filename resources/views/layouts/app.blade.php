@@ -40,6 +40,7 @@ script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/we
 var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
                       </li>
 
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -47,8 +48,8 @@ var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(scr
                         <!-- Authentication Links -->
                         @guest
 
-                            <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                            <li><a class="nav-link" href="{{ route('login') }}">@lang('new.login')</a></li>
+                            <li><a class="nav-link" href="{{ route('register') }}">@lang('new.register')</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,10 +59,17 @@ var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(scr
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        Logout
+                                        @lang('new.logout')
                                     </a>
                                     <a class="dropdown-item" href="{{ route('lists.index') }}">
-                                        My lists
+                                        @lang('new.my_lists')
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('lang', 'en') }}">
+                                        
+                                        English
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('lang', 'ru') }}">
+                                        Русский
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

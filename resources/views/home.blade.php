@@ -13,22 +13,22 @@
                         </div>
                     @endif
 
-                    Hellow, {{ Auth::user()->name }}
+                    @lang('new.welcome'), {{ Auth::user()->name }}
                     <br><form action="{{route('todos.create')}}">
                       {{csrf_field()}}
                       @method('GET')
-                      <input type="submit" value="Create!" class="btn btn-secondary">
+                      <input type="submit" value=@lang('new.create') class="btn btn-secondary">
                     </form>
                 </div>
                     <table class="table">
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>User</th>
-                      <th>name</th>
-                      <th>You`re going to do =)</th>
-                      <th>Status</th>
-                      <th>Change Status</th>
+                      <th>@lang('new.user')</th>
+                      <th>@lang('new.name')</th>
+                      <th>@lang('new.description')</th>
+                      <th>@lang('new.status')</th>
+                      <th>@lang('new.change_status')</th>
                     </tr>
                   </thead>
                   <tbody>

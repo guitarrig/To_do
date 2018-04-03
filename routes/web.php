@@ -11,18 +11,27 @@
 |
 */
 
+
+Route::middleware('LanguageSet')->group(function() {
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
+Route::get('/lang/{lang}', 'LanguageController')->name('lang');
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/{id}', 'UserController@show')->name('show_user');
 
 Route::post('/change', 'HomeController@change')->name('change_status');
 Route::get('/list_create/{id}', 'HomeController@list_create')->name('list_create');
 Route::post('/list_store', 'HomeController@list_store')->name('list_store');
 
+Route::get('/hello', 'HomeController@money');
+
 Route::resource('todos', 'HomeController', ['except' =>['edit']]);
 Route::resource('lists', 'ListController', ['only' => ['edit', 'update', 'show', 'index', 'destroy', 'create', 'store']]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+});

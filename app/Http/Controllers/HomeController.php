@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Todo;
+use App\Events\Curs;
 
 
 use Auth;
@@ -17,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('money');
     }
     /**
      * Show the application dashboard.
@@ -95,5 +96,9 @@ class HomeController extends Controller
       Todo::where('id', $id)->delete();
       return  \Redirect::back();
 
+    }
+
+    public function money(){
+    return  event(new Curs());
     }
 }

@@ -60,6 +60,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'user_list' => \App\Http\Middleware\UserProtect::class,
+        'LanguageSet' => \App\Http\Middleware\LanguageSet::class
 
     ];
 }
